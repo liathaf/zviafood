@@ -1,0 +1,16 @@
+.see-more-recipes-btn{
+    line-height: 3em;
+    padding: 0 20px;
+    align-self: center;
+    border: 1px solid $clr2;
+    background-color: $clr2;
+    color: $clr3;
+    transition: all .3s;
+    
+    &:hover{
+        
+        background-color: $clr5;
+        color: $clr2;
+    }
+    
+}

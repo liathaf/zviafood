@@ -1,0 +1,83 @@
+// Font Sizes
+.fs12 { font-size: rem(12px); }
+.fs14 { font-size: rem(14px); }
+.fs16 { font-size: rem(16px); }
+.fs18 { font-size: rem(18px); }
+.fs20 { font-size: rem(20px); }
+.fs24 { font-size: rem(24px); }
+.fs22 { font-size: rem(22px); }
+.fs28 { font-size: rem(28px); }
+.fs30 { font-size: rem(30px); }
+.fs40 { font-size: rem(40px); }
+.fs50 { font-size: rem(50px); }
+.fs60 { font-size: rem(60px); }
+
+
+.flex {
+    
+    display: flex;
+
+    &.justify-center{
+        justify-content: center;
+    }
+    &.align-center{
+        align-items: center;
+    }
+    &.column{
+        flex-direction: column;;
+    }
+    &.space-between{
+        justify-content: space-between;
+    }
+    &.space-around{
+        justify-content: space-around;
+    }
+    &.align-start{
+        align-items: flex-start;
+    }
+    &.align-end{
+        align-items: flex-end;
+    }
+    &.align-self-start{
+        align-self: flex-start;
+    }
+}
+
+// Media helpers
+
+.square-ratio {
+    @include aspect-ratio(1, 1);
+}
+.video-ratio {
+    @include aspect-ratio(160, 9);
+}
+.portrait-ratio {
+    @include aspect-ratio(9, 16);
+}
+
+// screen 
+
+.screen {
+    // &::before{
+        // content: "";
+        height: 100vh;
+        width: 100vw;
+        background-color: darken($color:  $clr4 , $amount: 50%);
+        position: fixed; 
+        z-index: 2;
+        top: 0;
+        right: 0;
+      
+
+        
+        
+    // }
+    
+    
+    
+}
+
+.erorr-msg{
+    color: $clr9;
+    margin-top: 5px;
+}

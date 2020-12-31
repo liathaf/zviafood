@@ -1,0 +1,31 @@
+
+footer{
+    background-color: $clr1;
+    color: $clr3;
+    margin-top: 20px;
+    flex-shrink: 0;
+ 
+
+    .footer-container{
+        height: 100px;
+        .footer-links{
+            li {
+                margin-inline-end: rem(15px);
+                
+                a{
+                    color: $clr3;
+                    transition: .3s;
+
+                    &:hover{
+                        color: $clr2;
+                    }
+                }
+            }
+        }
+
+        small{
+            color: $clr3;
+        }
+    }
+
+}

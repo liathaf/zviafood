@@ -1,0 +1,68 @@
+.comment{
+
+    padding: rem(30px);
+    border-bottom: rem(1px) dotted $clr7;
+
+    .comment-reply{
+        padding-top: 10px;
+    }
+    &.nested-comment{
+        border-bottom: none;
+        padding: rem(10px) rem(20px) 0 rem(10px);
+
+        .line{
+            margin-top: rem(10px);
+            width: 5%;
+            border-top: rem(1px) $clr7 dotted;
+            
+        }
+        
+    }
+       
+    .comment-desc {
+        color: $clr1;
+        padding: rem(5px) 0;
+        line-height: 1.5em;
+    }
+
+    .reply-createdAt-cotainers{
+        .createdAt{
+            font-style: italic;
+            &::after{
+                content: "\00b7\00b7";
+                padding: 0 rem(5px);
+
+            }
+        }
+
+        .reply-btn{
+            color: $clr2;
+
+        }
+    }
+
+    .comment-form-preview{
+        overflow: hidden;
+        opacity: 0;
+        height: 0;
+        transition: all .3s cubic-bezier( 0.5, 0.2, 0.5, 1);
+        width: 100%;
+
+        .comment-form{
+            margin: 0;
+        }
+
+        &.add-reply{
+      
+            opacity: unset;
+            height: unset;
+            position: static;
+            margin: rem(40px) 0;
+            
+        }
+
+
+    }
+
+
+}

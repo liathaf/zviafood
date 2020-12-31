@@ -1,0 +1,16 @@
+<div class="comment" [ngClass]="{'nested-comment': isNestedComment }">
+    <h2 class="name fs18">{{comment.name}}</h2>
+    <p class="comment-desc">{{comment.desc}}</p>
+    <div class="reply-createdAt-cotainers flex">
+        <p class="createdAt fs14">{{comment.createdAt | commentRelativeTime}}</p>
+        <button #elReplyBtn class=id{{comment._id}} (click)="this.toggleReplyForm.emit(comment._id)" class="reply-btn fs14">השב</button>
+    </div>
+    <div class="comment-form-preview" class=id{{comment._id}}>
+        <comment-form (onSaveComment)="saveComment($event)"></comment-form>
+    </div>
+    <div class="line"></div>
+    <div class="comment-reply" *ngIf="comment.comments">
+        <comment-preview *ngFor="let comment of comment.comments" [comment]="comment" 
+        (toggleReplyForm)="this.toggleReplyForm.emit($event)" isNestedComment = "true"></comment-preview>
+    </div>
+</div>

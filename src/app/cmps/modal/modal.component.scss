@@ -1,0 +1,172 @@
+.close-btn{
+    background-color: unset;
+    .remove-icon{
+        width: 8px;
+        margin-left: 5px;
+    }
+}
+
+.saved-recipe-modal{
+
+    width: 0;
+    height: 40px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s;
+    
+    
+    background-color: $clr1;
+    position: fixed;
+    bottom: 10px;
+    left: 5px;
+    border-radius: 5px;
+    border: 1px solid $clr7;
+
+
+    .save-msg{
+        color: $clr3;
+        line-height: 2em;
+        position: absolute;
+        left: 40px;
+        bottom: 50%;
+        transform: translate(0, 50%);
+    }
+
+    .remove-icon-recipe-link-container{
+        position: absolute;
+        right: 20px;
+        bottom: 50%;
+        transform: translate(0, 50%);
+        button{
+            margin-inline-end: 10px;
+           
+            background-color: unset;
+        }
+        
+        .recipe-go-to-recipe-detail-btn{
+            display: inline-block;
+            color: $clr2;
+            border-left: 1px solid $clr7;
+            line-height: 2em;
+           
+            padding-inline-end: 40px;
+            padding-inline-start: 10px;
+
+            
+        }
+    }
+
+    &.display-saved-recipe-msg{
+        width: 280px;
+        visibility: visible;
+        opacity: 1;
+    }
+
+   
+
+
+}
+
+
+
+.remove-recipe-modal{
+
+    width: 400px;
+    height: 171px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+    
+    
+    background-color: $clr1;
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50% , 50%);
+    border-radius: 5px;
+
+    z-index: 3;
+    
+
+    .remove-icon{
+        width: 8px;
+        margin: 20px;
+        float: right;
+    }
+
+    .remove-msg{
+     
+        color: $clr3;
+        border-bottom: 1px solid $clr3;
+        padding: 8px 20px 32px;
+        
+    }
+
+
+    .remove-cancel-btn{
+        
+        button{
+            padding: 0 10px;
+            line-height: 2em;
+            background-color:$clr3;
+            bottom: 20px;
+            position: absolute;
+
+            &:hover{
+                box-shadow: 0px 0px 3px 0 $clr3;
+            }
+
+            
+        }
+        .remove-btn{
+            background-color:$clr8;
+            left: 20px;
+            color: $clr3;
+        }
+        .cancel-btn{
+            right: 20px;
+        }
+    }
+    
+
+
+    &.display-remove-recipe-msg{
+    
+        visibility: visible;
+        opacity: 1;
+        
+    }
+}
+
+.after-removed-recipe-msg-modal{
+    width: 250px;
+    height: 40px;
+    transition: all 0.4s;
+    
+    
+    background-color: $clr1;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    border-radius: 5px;
+    transform: translate(-50% , 70px);
+    border: 1px solid $clr7;
+    
+    .after-remove-msg{
+        
+        color: $clr3;
+    }
+    
+    &.display-after-removed-recipe-msg{
+
+        animation: afterRemoveRecipeMsgAnimation 2s cubic-bezier(0, 1.54, 0.17, 1.35) .7s forwards;
+    }
+}
+
+@keyframes afterRemoveRecipeMsgAnimation {
+    0%{transform: translate(-50% , 70px);}
+    33%{transform: translate(-50% , 50%);}
+    100% {transform: translate(-50% , 70px);}
+}
+
+

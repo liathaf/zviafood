@@ -1,0 +1,22 @@
+
+<div [ngClass]="{'display-saved-recipe-msg': savedRecipeId}" class="saved-recipe-modal">
+    <div class="remove-icon-recipe-link-container">
+        <button class="close-btn" (click)="this.onRemoveSaveRecipeModal.emit()"><img class="remove-icon" src="../../../assets/img/remove.svg"/></button>
+        <button (click)="this.onGoToRecipeDetails.emit()" class="recipe-go-to-recipe-detail-btn fs12">צפייה במתכון</button>
+    </div>
+    <p class="save-msg fs12">המתכון נשמר</p>
+</div>
+
+<div [ngClass]="{'display-remove-recipe-msg': recipeIdToRemove}" class="remove-recipe-modal">
+    <button class="close-btn" (click)="removeDisplayMsg()"><img class="remove-icon" src="../../../assets/img/remove.svg"/></button>
+    <p class="remove-msg fs14">האם ברצונך למחוק את המתכון?</p>
+    <div class="remove-cancel-btn">
+        <button (click)="removeRecipe()" class="remove-btn">מחיקה</button>
+        <button (click)="removeDisplayMsg()" class="cancel-btn">ביטול</button>
+    </div>
+</div>
+
+<div [ngClass]="{'display-after-removed-recipe-msg': isRecipeRemoved}" 
+class="after-removed-recipe-msg-modal flex align-center justify-center">
+    <p class="after-remove-msg fs12">המתכון נמחק</p>
+</div>

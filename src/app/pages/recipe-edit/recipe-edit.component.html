@@ -1,0 +1,344 @@
+<div class="recipe-edit">
+        <h1 class="main-title fs20">עריכת מתכון</h1>
+        <form (submit)="onSubmitEditForm()" class="flex column">
+            <div class="main-title-edit column-label flex align-center">
+                <label class="fs16">כותרת המתכון*</label>
+                <input type="text" placeholder="כותרת" [(ngModel)]="recipeTitle" name="recipeTitle">
+            </div>
+            <div class="desc-edit flex column-label align-center">
+                <label class="fs16">תיאור המתכון*</label>
+                <textarea placeholder="תיאור המתכון" [(ngModel)]="recipeDesc" name="recipeDesc"></textarea>
+            </div>
+
+            <div class="image-upload column-label flex">
+                <label class="fs16">העלאת תמונות*</label>
+
+                <input #imgInput hidden (change)="onUploadImg($event)" type="file" id="img" name="img" accept="image/*"
+                    name="recipeImg">
+
+                <div class="flex uploaded-container"> 
+                    <div class="uploaded-img-button-container flex column">
+                        <button name="recipePreview" (click)="onClickToUploagImg($event)" type="button">שער</button>
+                        <div class="img-container" *ngFor="let img of uploadedImgs">
+                            <img class="uploded-img" *ngIf="img.imgName === 'recipePreview'" [src]="img.imgUrl" />
+                        </div>
+                        <p class="fs12" *ngIf="!isImgLoaded('recipePreview') && !isSelecedImg('recipePreview')">טרם הועלתה
+                            תמונה</p>
+                        <img *ngIf="!isImgLoaded('recipePreview') && isSelecedImg('recipePreview')" class="loading-icon"
+                            src="../../../assets/img/loading.png">
+                    </div>
+                    <div class="uploaded-img-button-container flex column">
+                        <button name="recipeDetails1" (click)="onClickToUploagImg($event)" type="button">עליונה</button>
+                        <div class="img-container" *ngFor="let img of uploadedImgs">
+                            <img class="uploded-img" *ngIf="img.imgName === 'recipeDetails1'" [src]="img.imgUrl" />
+                        </div>
+                        <p class="fs12" *ngIf="!isImgLoaded('recipeDetails1') && !isSelecedImg('recipeDetails1')">טרם הועלתה
+                            תמונה</p>
+                        <img *ngIf="!isImgLoaded('recipeDetails1') && isSelecedImg('recipeDetails1')" class="loading-icon"
+                            src="../../../assets/img/loading.png">
+                    </div>
+                    <div class="uploaded-img-button-container flex column">
+                        <button name="recipeDetails2" (click)="onClickToUploagImg($event)" type="button">תחתונה</button>
+                        <div class="img-container" *ngFor="let img of uploadedImgs">
+                            <img class="uploded-img" *ngIf="img.imgName === 'recipeDetails2'" [src]="img.imgUrl" />
+                        </div>
+                        <p class="fs12" *ngIf="!isImgLoaded('recipeDetails2') && !isSelecedImg('recipeDetails2')">טרם הועלתה
+                            תמונה</p>
+                            <img *ngIf="!isImgLoaded('recipeDetails2') && isSelecedImg('recipeDetails2')" class="loading-icon"
+                            src="../../../assets/img/loading.png">
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                
+                <div class="yield-edit column-label flex align-center">
+                    <label class="fs16">כמות מנות</label>
+                    <div class="yield-count-drop-down-container flex">
+                        <div class="yield-count">
+                            <input class="fs14" [(ngModel)]="yieldCount" name="yieldCount" type="text"
+                            placeholder="הכנס כמות">
+                        </div>
+                        <div class="drop-down-container flex">
+                            <div class="yield-desc-label label flex align-center space-between" (click)="showYieldDropDowm()">
+                                <p #yieldLabel class="flex align-center space-between fs14">בחר יחידות</p>
+                                <img class="arrow-down-icon" src="../../../assets/img/down-arrow.svg">
+                            </div>
+                            <ul class="optains yield-units" [ngClass]="{'show-yield-optains':isShowYieldOptains}">
+                                <li class="fs14" (click)="saveYieldUnit($event)">יחידות</li>
+                                <li class="fs14" (click)="saveYieldUnit($event)">מנות</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="msg fs14">{{addYieldMsg}}</p>
+                </div>
+                
+            <div class="tools-edit flex column">
+                
+                <div class="add-tool column-label flex">
+                    <label class="fs16">ציוד</label>
+                    <div class="input-tool-btn-container flex">
+                        <input [(ngModel)]="tool" name="tool" type="text" placeholder="הכנס ציוד">
+                        <button (click)="addTool()" type="button" class="add-btn">הוסף</button>
+                    </div>
+                </div>
+                <div class="flex column-label">
+                    <label class="delete-label"></label>
+                    <p class="msg fs14">{{addTooliMsg}}</p>
+                </div>
+                <div class="tools-container flex column">
+                    <div class="tool flex" *ngFor="let tool of tools; let i = index">
+                        <div class="flex align-center">
+                            <div class="remove-icon-container flex align-center justify-center">
+                                <img (click)="removeTool({toolName:tool , idx: i})" class="remove-icon" src="../../../assets/img/remove.svg">
+                            </div>
+                            <p>{{tool}}</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="label-edit column-label flex">
+                <label class="fs16">תגיות*</label>
+                <div class="flex column">
+                    <div class="flex drop-down-container">
+                        <div class="label flex align-center space-between" (click)="showLabelDropDowm()">
+                            <p #elLabel class="flex align-center space-between fs14">בחר תגיות</p>
+                            <img class="arrow-down-icon" src="../../../assets/img/down-arrow.svg">
+                        </div>
+                        <ul class="optains" [ngClass]="{'show-label-optains':isShowLabelOptains}">
+                            <li *ngFor="let labels of labels" class="fs14" (click)="saveLabel($event)">{{labels}}</li>
+                        </ul>
+                    </div>
+                    <div class="label labels-container flex" *ngFor="let chosenLabel of chosenLabels">
+                        <div class="flex align-center">
+                            <div class="remove-icon-container flex align-center justify-center">
+                                <img (click)="removeLabel(chosenLabel)" class="remove-icon"
+                                src="../../../assets/img/remove.svg">
+                            </div>
+                            <p>{{chosenLabel}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="ingredients-edit flex column">
+                <div class="flex column-label add-ingredients-container">
+                    <label class="fs16">מצרכים*</label>
+                    
+                    <div class="add-ingredients">
+                        
+                        <p class="ingri-title flex align-start">כותרת</p>
+                        <input [(ngModel)]="ingriSectionTitle" name="ingriSectionTitle" type="text"
+                        placeholder="הכנס כותרת">
+                        
+                        <p class="ingri-title flex align-start">מרכיב*</p>
+                        <input [(ngModel)]="ingriName" name="ingriName" type="text" placeholder="הכנס מרכיבי מתכון">
+                        
+                        <p class="count-ingri-title flex align-start">כמות</p>
+                        <input [(ngModel)]="countIngri" name="countIngri" type="text" placeholder="הכנס כמות">
+                        
+                        
+                        <p class="ingri-title flex align-start">יחידות</p>
+                        <div class="drop-down-container ingri-drop flex">
+                            
+                            <div class="flex label align-center space-between" (click)="showIngriUnitDropDowm()">
+                                <p #elUnitIngri class="flex align-center space-between fs14">בחר יחידות</p>
+                                <img class="arrow-down-icon" src="../../../assets/img/down-arrow.svg">
+                            </div>
+                            <ul class="optains" [ngClass]="{'show-unit-ingri-optains':isShowUnitIngriOptains}">
+                                <li class="fs14" (click)="saveUnitIngri($event)">יחידה</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">יחידות</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">כוס</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">כוסות</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">כף</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">כפות</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">כפית</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">כפיות</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">גרם</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">קילו</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">ליטר</li>
+                                <li class="fs14" (click)="saveUnitIngri($event)">מיליליטר</li>
+                            </ul>
+                            
+                        </div>
+                        
+                        <button (click)="addIngredients()" type="button" class="add-btn">הוסף</button>
+                    </div>
+                    
+                </div>
+                <div class=" column-label flex">
+                    <label class="delete-label"></label>
+                    <p class="msg fs14">{{addIngriMsg}}</p>
+                </div>
+                <div class="ingredient column-label flex" *ngFor="let ingr of allIngredients; let i = index">
+                    <label class="delete-label"></label>
+                    
+                    <div class="ingredient-container">
+                        <!-- if ingri has title -->
+                        <div *ngIf="ingr.ingriSectionTitle" class="flex column"> 
+                            <p class="ingri-title">{{ingr.ingriSectionTitle}}</p>
+
+                            <div *ngFor="let ingri of ingr.ingredients; let j = index" class="flex align-center">
+                               
+                                <p *ngIf="!(ingriToEdit && (ingriToEdit.idx === j && ingriToEdit.ingriSectionTitle === ingr.ingriSectionTitle))"
+                                (click)="onEditIngri({ingri:ingri,ingriSectionTitle:ingr.ingriSectionTitle, idx: j})"
+                                class="ingri-desc">{{ingri}}</p>
+
+                                <input *ngIf="ingriToEdit && (ingriToEdit.idx === j && ingriToEdit.ingriSectionTitle === ingr.ingriSectionTitle)"
+                                [(ngModel)]="ingriToEdit.ingri" name="ingri" class="edit-ingri-input"/>
+
+                                <button 
+                                *ngIf="ingriToEdit && (ingriToEdit.idx === j && ingriToEdit.ingriSectionTitle === ingr.ingriSectionTitle)" 
+                                class="save-line-btn"  
+                                (click)="onSaveEditIngri({ingriSectionTitle:ingr.ingriSectionTitle, idx: j})">שמור</button>
+
+                                <button 
+                                *ngIf="ingriToEdit && (ingriToEdit.idx === j && ingriToEdit.ingriSectionTitle === ingr.ingriSectionTitle)"
+                                (click)="removeIngri({ingri:ingri , ingriSectionTitle:ingr.ingriSectionTitle , idx: j})" 
+                                class="remove-line-btn" >מחק</button>
+
+                            </div>
+                        </div>
+                        <!-- if ingri has no title -->
+                        <div *ngIf="!ingr.ingriSectionTitle" class="flex column">
+                            <div class="flex align-start">
+
+                                <p class="ingri-desc" (click)="onEditIngri({ingri:ingr, ingriSectionTitle: '' ,idx: i})" *ngIf="!(ingriToEdit && ingriToEdit.idx === i)">
+                                    {{ingr}}
+                                </p>
+
+                                <input *ngIf="ingriToEdit && ingriToEdit.idx === i"
+                                [(ngModel)]="ingriToEdit.ingri" name="ingri" class="edit-ingri-input"/>
+
+                                <button 
+                                *ngIf="ingriToEdit && ingriToEdit.idx === i" class="save-line-btn"  
+                                (click)="onSaveEditIngri({ingriSectionTitle:'', idx: i})">שמור</button>
+
+                                <button 
+                                *ngIf="ingriToEdit && ingriToEdit.idx === i" class="save-line-btn" 
+                                (click)="removeIngri({ingri:ingr , ingriSectionTitle:'' , idx: i})">מחק</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="howToPreper-edit flex column">
+                
+                <div class="add-howToPreper-container column-label flex">
+                    <label class="fs16">*הוראות הכנה</label>
+                    <div class="add-prep flex column">
+                        
+                        <p class="prep-title flex align-start">כותרת</p>
+                        <input [(ngModel)]="prepSectionTitle" name="prepSectionTitle" type="text"
+                        placeholder="הכנס כותרת">
+                        
+                        
+                        <p class="ingri-title flex align-start">*הוראות הכנה</p>
+                        <textarea [(ngModel)]="howToPreper" name="howToPreper" type="text"
+                        placeholder="הכנס הוראות הכנה"></textarea>
+                        
+                        <button (click)="addHowToPreper()" type="button" class="add-btn">הוסף</button>
+                    </div>
+                </div>
+                <div class="flex column-label">
+                    <label class="delete-label"></label>
+                    <p class="msg fs14">{{addHowToPreperiMsg}}</p>
+                </div>
+                
+                <div class="preps column-label flex" *ngFor="let howToPrepare of preps; let i = index">
+                    <label class="delete-label" ></label>
+                    <div class="preps-container">
+
+                        <!-- if prep has title -->
+                        <div *ngIf="howToPrepare.title" class="flex column">
+                            <p class="howToPrepare-title">{{howToPrepare.title}}</p>
+
+                            <div *ngFor="let prep of howToPrepare.steps; let j = index" class="flex align-start">
+                                
+                                <p class="prep-desc" (click)="onEditprep({prep:prep, title: howToPrepare.title ,idx: j})"
+                                *ngIf="!(prepToEdit && (prepToEdit.idx === j && prepToEdit.title === howToPrepare.title))">
+                                {{prep}}</p>
+
+                                <textarea *ngIf="prepToEdit && (prepToEdit.idx === j && prepToEdit.title === howToPrepare.title)"
+                                [(ngModel)]="prepToEdit.prep" name="prep" class="edit-prep-input"></textarea>
+
+                                <button 
+                                *ngIf="prepToEdit && (prepToEdit.idx === j && prepToEdit.title === howToPrepare.title)" 
+                                class="save-line-btn"  
+                                (click)="onSaveEditPrep({title: howToPrepare.title, idx: j})">שמור</button>
+
+                                <button 
+                                *ngIf="prepToEdit && (prepToEdit.idx === j && prepToEdit.title === howToPrepare.title)"
+                                (click)="removePrep({howToPreper:prep , title:howToPrepare.title  , idx: j})" 
+                                class="save-line-btn" >מחק</button>
+                                
+                            </div>
+                        </div>
+
+                        <!-- if prep has no title -->
+                        <div *ngIf="!howToPrepare.title" class="flex column">
+                            <div class="flex align-start">
+
+                                <p class="prep-desc" *ngIf="!(prepToEdit && prepToEdit.idx === i)"
+                                (click)="onEditprep({prep:howToPrepare, title: '' ,idx: i})">
+                                    {{howToPrepare}}</p>
+
+                                <textarea *ngIf="prepToEdit && prepToEdit.idx === i"
+                                [(ngModel)]="prepToEdit.prep" name="prep" class="edit-prep-input"></textarea>
+
+                                <button 
+                                *ngIf="prepToEdit && prepToEdit.idx === i" 
+                                class="save-line-btn"  
+                                (click)="onSaveEditPrep({title: '', idx: i})">שמור</button>
+
+                                <button 
+                                *ngIf="prepToEdit && prepToEdit.idx === i"
+                                (click)="removePrep({howToPreper:howToPrepare , title:''  , idx: i})" 
+                                class="save-line-btn" >מחק</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            
+            <div class="note-edit">
+                
+                <div class="add-note column-label flex">
+                    <label class="fs16">הערה</label>
+                    <div class="input-add-btn-container flex">
+                        <input [(ngModel)]="note" name="note" type="text" placeholder="הכנס הערה">
+                        <button (click)="addNote()" type="button" class="add-btn">הוסף</button>
+                    </div>
+                </div>
+                <div class="flex column-label">
+                    <label class="delete-label"></label>
+                    <p class="msg fs14">{{addNoteMsg}}</p>
+                </div>
+                <div class="notes-container flex column">
+                    <div class="note flex" *ngFor="let note of notes; let i = index">
+                        <div class="flex align-start">
+                            <div class="remove-icon-container flex align-center justify-center">
+                                <img (click)="removeNote({noteName:note ,  idx: i})" class="remove-icon" src="../../../assets/img/remove.svg">
+                            </div>
+                            <p class="note-desc">{{note}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+            <button class="save-recipe-btn">שמור</button>
+            <p class="msg save-recipe-msg fs14">{{saveRecipeMsg}}</p>
+        </form>
+        
+    </div>
+    
+    
+    

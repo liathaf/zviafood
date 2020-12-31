@@ -1,0 +1,51 @@
+.recipes-by-label{
+    
+    .label-title {
+        margin-top: rem(50px);
+    }
+    .main-label{
+        
+        font-weight: 100;
+        color: $clr2;
+        text-align: center;
+        position: relative;
+     
+        
+        &::after , &::before{
+            content: " ";
+            width: rem(70px);
+            height: 1px;
+            background-color: $clr7;
+            position: absolute;
+            top: 50%;
+        }
+        &::after{
+            right: -90px;
+        }
+
+        &::before{
+            left: -90px;
+            
+        }
+    }
+
+    .search-title-container{
+        .title {
+            line-height: 1em;
+            margin-inline-start: rem(10px);
+            
+        }
+
+        .search-str{
+            margin-inline-start: rem(10px);
+            font-style: italic;
+        }
+    }
+
+    .recipe-list {
+
+        margin-top: 50px;
+    }
+    
+}
+    

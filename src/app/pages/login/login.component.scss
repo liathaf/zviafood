@@ -1,0 +1,29 @@
+.login{
+
+    .title{
+        text-align: center;
+        margin-bottom: rem(20px);
+        color: $clr7;
+        
+    }
+
+    .form{
+
+        .input-container{
+            margin-bottom: rem(10px);
+            input{
+                width: 300px;
+                border: none;
+                border-radius: 3px;
+            }
+        }
+        
+        .login-btn{
+            padding: 0 rem(20px);
+            line-height: 3em;
+            background-color: $clr7;
+            color: $clr3;
+            border-radius: 3px;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<div class="home"> 
+    <section *ngIf="recipes.length" class="title-recipe-container container flex column">
+        <div class="main-img-container flex justify-center align-center">
+            <img class="main-img" alt="צביה" src="../../../assets/img/zvia.JPG"/>
+        </div>
+        <h3 class="recently-recipes-title fs22">מתכונים אחרונים</h3>
+        <recipe-list (removeRecipe)="onRemoveRecipe($event)"
+        [isLoggedIn]="isLoggedIn" [countRecipe]="countRecipe" [recipes]="recipes"></recipe-list>
+        <button *ngIf="countRecipe<recipes.length" (click)="changeCountRecipe()" class="see-more-recipes-btn">ראה עוד</button>
+    </section>
+</div>

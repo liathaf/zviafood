@@ -1,0 +1,23 @@
+<div class="recipe" *ngIf="recipe">
+    <div class="prev-img-recipe-container" [ngClass]="{'user-style': isLoggedIn}">
+        <a href="" [routerLink]="['/recipe',recipe._id]">
+            <img [src]="(atRecipeByTitlePage || isMobileQuery)? getImgUrl('recipeDetails2') : getImgUrl('recipePreview')"/>
+        </a>
+        <div *ngIf="isLoggedIn" class="edit-trash flex">
+            <a [routerLink]="['/recipe/edit',recipe._id]"><button (click)="this.onToggleRecipeEdit.emit(true)">עריכה</button></a>
+            <button (click)="this.onRemoveRecipe.emit(this.recipe._id)">מחיקה</button>
+        </div>
+    </div>
+    <div class="recipe-details-container flex column align-center">
+        <div class="label-time-container flex space-between">
+            <p class="time fs14">{{recipe.createdAt | date  : 'shortDate'  : 'UTC+02:00'  : 'he_IL' }}</p>
+            <div class="labels flex">
+                <div class="label-container" *ngFor="let label of recipe.labels; let i=index">
+                    <a class="label fs12" *ngIf="i < 3" [routerLink]="['/recipe/label',label]">{{label}}</a>
+                </div>
+            </div>
+        </div> 
+        <a href="" [routerLink]="['/recipe',recipe._id]"><h2 class="title-recipe fs22">{{recipe.title}}</h2></a>
+        <p class="desc">{{recipe.desc.split('').slice(0,120).join('')}}... <a class="recipe-link fs14" href="" [routerLink]="['/recipe',recipe._id]">לצפייה במתכון</a></p>
+    </div>
+</div>

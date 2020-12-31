@@ -1,0 +1,41 @@
+
+
+.comment-form{
+
+    margin-bottom: rem(50px);
+    width: 40%;
+   
+
+    .name , .desc{
+        background-color: $clr5;
+        
+    }
+
+    .name-btn-container{
+        
+        .name{       
+            margin: rem(10px) 0 0 rem(10px);
+            width: 70%;
+        }
+
+        .submission-btn{
+            width: 30%;
+            margin: rem(10px) rem(10px) 0 0 ;
+            padding: 0 10px;
+            line-height: 2.5em;
+            background-color: $clr1;
+            color: $clr3;
+            text-align: center;
+            transition: all 0.3s;
+
+            &:hover{
+                background-color: $clr7;
+                
+            }
+            
+        }
+    }
+
+  
+
+}

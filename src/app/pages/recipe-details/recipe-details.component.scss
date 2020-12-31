@@ -1,0 +1,139 @@
+.recipe-details {
+    .recipe-title-desc-container {
+        margin-bottom: 50px;
+        .recipe-title {
+            
+            font-weight: 100;
+            color: $clr2;
+            text-align: center;
+            
+        }
+
+        .recipe-desc {
+            text-align: center;
+            max-width: 75ch;
+            font-family: AssistantSemiBold;
+        }
+        
+    }
+
+    .recipe-img{
+        height: 500px;
+        margin: 50px 0 0 0;
+    }
+    
+
+    & .recipe-img:first-of-type{
+        margin: 0 0 50px 0;
+        
+    }
+   
+
+    
+    .recipe-details-container {
+
+
+        .tools-yield-container{
+
+            margin-bottom: rem(30px);
+    
+            .tool{
+                margin: 0 0 rem(5px) rem(5px);
+                
+                &::after{
+                    content: ", ";
+                }
+                &:last-child::after{
+                    content: "";
+                }
+            }
+    
+            .icon-yield-tool{
+                width: 20px;
+                height: 20px;
+                margin-inline-end: rem(10px);
+            }
+        }
+        
+
+        .ingredient-container {
+            margin-bottom: rem(20px);
+
+            .ingredient-title {
+                margin-bottom: rem(10px);
+            }
+            .ingSection-title {
+                margin: rem(10px) 0 rem(5px);
+                text-decoration: underline;
+            }
+
+            .ingredient {
+                line-height: 1.8em;
+            }
+        }
+
+        .prep-container {
+            .prep-title {
+                margin-bottom: rem(15px);
+            }
+            .howToPrepare {
+                .step-count-container {
+                    padding: rem(15px) rem(10px);
+                    border-radius: 3px;
+                    cursor: pointer;
+                    .countStep {
+                        margin-inline-end: rem(10px);
+                        padding: rem(1px) rem(8px);
+                        color: $clr3;
+                        background-color: $clr2;
+                        border-radius: 999px;
+                        border: solid 1px $clr2;
+                        align-self: flex-start;
+                        transition: all .3s;
+
+                        
+                    }
+                    .step {
+                        line-height: 1.5em;
+                        
+                    }
+
+                    &:hover , &.markedStep {
+                        background-color: $clr6;
+                        .countStep{
+                            color: $clr2;
+                            background-color: unset;
+
+                        }
+                    }
+                }
+                .preperations-title {
+                    margin: rem(10px) 0 rem(5px);
+                    text-decoration: underline;
+                }
+            }
+
+            
+            .notes{
+                .note-title{
+                    padding-top: rem(20px);
+                }
+                .note{
+
+                    padding:rem(10px) 0;
+
+                    .note-icon{
+                        width: 20px;
+                        height: 20px;
+                        margin-inline-end: rem(10px);
+                    }
+                }
+            }
+        }
+    }
+
+
+   
+
+}
+

@@ -1,0 +1,8 @@
+<h3 class="recipe-comments-title fs20">תגובות</h3>
+<div class="comment-list" #elCommentList>
+    <comment-list [comments]="comments" (onToggleReplyForm) = "toggleReplyForm($event)"></comment-list>
+</div>
+<div #commentForm class="main-comment-form">
+    <comment-form (onSaveComment)="saveComment($event)"></comment-form>
+</div>
+

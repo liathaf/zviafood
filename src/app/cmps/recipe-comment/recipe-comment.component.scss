@@ -1,0 +1,18 @@
+.recipe-comments-title{
+  
+        padding: 20px 10px 0 0;
+        position: relative;
+        &::before {
+            content: "";
+            height: 1em;
+            border-right: 2px solid $clr1;
+            position: absolute;
+            right: 0;
+            bottom: 5%;
+        }
+    
+}
+
+.main-comment-form{
+    padding-top: 20px;
+}

@@ -1,0 +1,7 @@
+
+<div *ngIf="recipes" class="recipe-list" [ngClass]="{'recipe-by-title-style' : atRecipeByTitlePage}" >
+    <recipe-preview *ngFor="let recipe of recipes | countRecipe: countRecipe"
+    (onRemoveRecipe)="this.removeRecipe.emit($event)"
+    [recipe]="recipe" [isLoggedIn]="isLoggedIn" 
+    [atRecipeByTitlePage]="atRecipeByTitlePage"></recipe-preview>
+</div>

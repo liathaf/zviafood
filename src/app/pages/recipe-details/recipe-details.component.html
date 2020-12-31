@@ -1,0 +1,75 @@
+
+    <div class="recipe-details container" *ngIf="recipe">
+    
+        <div class="recipe-title-desc-container flex column align-center justify-center">
+            <h4 class="recipe-title fs60">{{recipe.title}}</h4>
+            <p class="recipe-desc fs22 container">{{recipe.desc}}</p>
+        </div>
+
+    
+        <img class="recipe-img" [src]="getImgUrl('recipeDetails1')">
+           
+        <div class="recipe-details-container">
+            <div class="tools-yield-container">
+
+                <div class="flex" *ngIf="recipe.tools.length">
+                    <img class="icon-yield-tool" src="../../../assets/img/mixer-blender.png"/>
+                    <h2 class="tool fs16" *ngFor="let tool of recipe.tools">{{tool}}</h2>
+                </div>
+
+                <div class="flex" *ngIf="recipe.yield">
+                    <img class="icon-yield-tool" src="../../../assets/img/plate.png"/>
+                    <h2 class="yield fs16">{{recipe.yield.yieldCount + " " + recipe.yield.yieldUnit}}</h2>
+                </div>
+                
+            </div>
+            <div class="ingredient-container">
+                <h4 class="ingredient-title fs28">מצרכים</h4>
+                <div *ngFor="let ingSection of recipe.allIngredients">
+                    <div *ngIf="ingSection.ingriSectionTitle">
+                        <h2 class="ingSection-title fs20">{{ingSection.ingriSectionTitle}}</h2>
+                        <p class="ingredient fs18" *ngFor="let ingredient of ingSection.ingredients">{{ingredient || ingSection}}</p>
+                    </div>
+                    <div *ngIf="!ingSection.ingriSectionTitle">
+                        <p class="ingredient fs18">{{ingSection}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="prep-container">
+                <h4 class="prep-title fs28">אופן ההכנה</h4>
+                <div class="howToPrepare" *ngFor="let preperations of recipe.howToPrepare | addCountStepPrep">
+                    <div *ngIf="preperations.title" >
+                        <h2 class="preperations-title fs20">{{preperations.title}}</h2>
+                        <div #countStep (click)="toggleMarkedStep(step.stepNum)"
+                        class="step-count-container flex align-center"
+                        
+                        *ngFor="let step of preperations.steps">
+                            <h4 class="countStep">{{step.stepNum}}</h4>
+                            <p class="step fs18">{{step.step}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="!preperations.title">
+                        <div #countStep class="step-count-container flex align-center"
+                        
+                        (click)="toggleMarkedStep(preperations.stepNum)">
+                            <h4 class="countStep">{{preperations.stepNum}}</h4>
+                            <p class="step fs18">{{preperations.step}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="notes" *ngIf="recipe.notes.length">
+                    <h2 class="note-title fs18">הערות:</h2>
+                    <div class="note flex" *ngFor="let note of recipe.notes">
+                        <img class="note-icon" src="../../../assets/img/kitchen.png"/>
+                        <p>{{note}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <img class="recipe-img" [src]="getImgUrl('recipeDetails2')">
+        <recipe-comment [comments]="recipe.comments"></recipe-comment>
+    </div>
+
+
+

@@ -1,0 +1,138 @@
+.recipe-filter{     
+
+
+   
+    .search-title{
+        margin-bottom: rem(10px);
+    }
+
+    .search-input {
+    
+        .form-container{
+            
+            
+            .search-icon{
+                
+                cursor: pointer;
+                fill: $clr1;
+                width: 20px;
+                transition: .3s;
+                
+                &:hover{
+                    transform:rotate(15deg);
+                }
+                
+            }
+
+        
+            
+            .filter-recipe-from{
+               
+                
+                .input-filter{
+                    background-color:inherit;
+                    border: none;
+                    max-width: 0;
+                    padding: rem(10px) 0;
+                    transition: all 0.5s;
+                   
+                    
+                    
+                    
+                }
+            }
+            
+        }
+
+        
+    }
+    
+    &.show-search-input{
+
+        .form-container{
+
+                border-bottom: $clr1 1px solid;
+
+                .filter-recipe-from{
+               
+                
+                    .input-filter{
+                      
+                        max-width: 160px;
+                        padding: rem(10px);
+
+                    }
+                }
+
+        }
+
+    }
+    
+
+
+    .search-labels-container {
+    
+        position: relative;
+        
+        
+        
+        .all-recipes-title{
+            padding-inline-end: rem(20px);
+            color:$clr1;
+            letter-spacing: 0.1em;
+            transition: color .3s;
+            cursor: pointer;
+
+            
+        }
+    
+    
+
+        .labels-cotainer{
+            
+            margin-top: 9px;
+            position: absolute;
+            background-color: $clr1;
+            z-index: 6;
+            opacity: 0;
+            visibility: hidden;
+            transition:  all .3s;
+            padding: rem(20px) rem(40px);
+            
+
+            
+            .label{
+                padding: 5px 0;
+                transition: .3s;
+
+                
+            
+                &:hover{
+                    color: $clr2;
+                }
+            }
+
+
+        }
+
+
+        &:hover {
+
+            .labels-cotainer{
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .all-recipes-title{
+                color: $clr3;
+                
+            }
+        }
+
+        
+    
+
+        
+    }
+    
+}

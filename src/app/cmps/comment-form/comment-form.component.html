@@ -1,0 +1,11 @@
+<form ngNativeValidate  class="comment-form flex column" 
+    (submit)="onSubmitComment()">
+    <textarea required class="desc fs16" name="desc" 
+    [(ngModel)]="desc" placeholder="*כתבו תגובה...">
+    </textarea>
+    <div class="name-btn-container flex">
+        <input required class="name fs16" name="name" 
+        [(ngModel)]="name" placeholder="*שם"/>
+        <button class="submission-btn">שליחה</button>
+    </div>
+</form>

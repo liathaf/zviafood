@@ -1,0 +1,293 @@
+    
+header {
+
+    background-color: $clr2;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+    transition: background-color 0.3s;
+    
+   
+      
+    
+    
+    .nav-bar{
+
+        position: relative;
+        height: 140px;
+
+        .add-new-recipe-link-container{
+            position: absolute;
+            bottom:0;
+            left: 10%;
+            
+            .add-new-recipe-link{
+                position: absolute;
+                bottom: -22.5px;
+                left: 0;
+                width: 45px;
+                height: 45px;
+                background-color: $clr1;
+                border-radius: 999px;
+                box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+                cursor: pointer;
+                
+    
+                img{
+                    width: 50%;
+                    height: 50%;
+                }
+
+                &:hover{
+    
+                    + .add-recipe-title {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    
+                }
+                
+            }
+
+            .add-recipe-title{
+
+                position: absolute;
+                background-color: #1d1d1d;
+                color: #ffff;
+                left: 54px;
+                top: -13px;
+                width: 63px;
+                line-height: 2.2em;
+                padding: 0px 5px;
+                border-radius: 4px;
+                visibility: hidden;
+                opacity: 0;
+                transition: all 0.3s;
+                font-size: 12px;
+                z-index: 1;
+
+                &::after{
+                    content: "";
+                    position: absolute;
+                    border-top: 12.5px solid transparent;
+                    border-right: 14px solid $clr1;
+                    border-bottom: 12.5px solid transparent;
+                    left: -6px;
+                    top: 1px;
+
+                   
+                }
+            }
+
+            
+        }
+        
+        
+       
+        .manu-icon {
+            width: 30px;
+            height: 30px;
+            background-color:$clr1;
+            border-radius: 2px;
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+
+
+            
+            .open-manu{
+               width: 20px;
+               height: 2px;
+               background-color: $clr3;
+               position: absolute;
+               bottom: 48%;
+               top: 48%;
+               cursor: pointer;
+
+               &::before,
+               &::after{
+                    content: "";
+                    width: 20px;
+                    height: 2px;
+                    background-color: $clr3;
+                    position: absolute;
+                    transition: all 0.3s cubic-bezier( 0.5, 0.2, 0.5, 1);
+      
+               }
+
+               &::before{
+                top: 6px;
+                left: 0;
+                
+            }
+                &::after{
+                bottom: 6px;
+                left: 0;
+                
+               }
+
+            }
+
+            &:hover{
+                .open-manu::before{
+                    transform:rotate(41deg);
+                    top: 3px;
+                    width: 10px;
+                }
+                .open-manu::after{
+                    transform:rotate(-41deg);
+                    top: -4px;
+                    width: 10px;
+                }
+
+            }
+        }
+
+        .logo-links-filter-container{
+           
+            .logo-link {
+                
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -76%);
+                transition: all .3s;
+                
+                .logo {
+                    width: 160px;
+                    
+                }
+                
+                &.login-style {
+                    transform: translate(-50%, -50%);
+                }
+               
+            }
+
+            .nav-bar-links{  
+                
+               
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-62%, 33%);
+                transition: all .3s;
+                height: 47px;
+                min-width: 320px;
+                
+
+
+                li{
+                    
+                    transition: all .3s;
+                    height: 100%;
+                    position: relative;
+                    margin-inline-start: rem(20px);
+                    
+                    
+                    .main-link{
+                        
+                        cursor: pointer;
+                        color:$clr1;
+                        letter-spacing: 0.1em;
+                        transition: color .3s;
+                
+                        
+                        
+
+                        &:hover , &.clicked-link {
+                            color: $clr3;
+                            
+                        }
+
+    
+                        &:hover::before{
+                            width: 100%;
+                        }
+                    }
+                }
+
+
+                &.move-navbar-links{
+                    min-width: 440px;
+                    
+
+                }
+            }
+          
+        }
+
+    }
+
+    &.smallerNavBar{
+        
+        background-color: $clr8;
+
+        .nav-bar {
+
+            height: 100px;
+
+            .logo-links-filter-container{
+               
+                .logo-link{
+                    transform: translate(45%, -60%);
+                   
+
+                    &.moveLogo{ /// when click on search icon
+                        transform: translate(68%, -60%);    
+                    }
+                }
+
+                .nav-bar-links{
+                    transition: all .3s;
+                    transform: translate(-78%, -50%);
+                   
+                }
+            }
+        }
+
+      
+        
+    }
+
+}
+
+
+.nav-bar-links-container.narrow-tablet-style{
+
+    .close-manu-cotainer{
+                    
+        .close-manu{
+        
+            cursor: pointer;
+           
+    
+            &::before,
+            &::after{
+                    content: "";
+                    width: 15px;
+                    height: 2px;
+                    background-color: $clr3;
+                    position: absolute;
+                    transition: all 0.3s cubic-bezier( 0.5, 0.2, 0.5, 1);
+            }
+    
+            &::before{
+                top: 0px;
+                left: 0;
+                transform:rotate(41deg);
+                
+            }
+                &::after{
+                top: 0px;
+                left: 0;
+                transform:rotate(-41deg);
+                
+            }
+        }
+    
+    }
+}
+
+

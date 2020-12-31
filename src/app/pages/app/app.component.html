@@ -1,0 +1,17 @@
+<section #app class="app flex column">
+
+    <div [ngClass]="{'screen': isOpenSceen}"></div>
+
+    <nav-bar (onOpenMenu)="onShowScreen($event)" [labels]="labels" [isOpenSceen] = "isOpenSceen" [isLoggedIn]="isLoggedIn">
+    </nav-bar>
+
+    <main class="main-content" [ngClass]="{'notHomeStyle': !atHome}">
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </main>
+
+    <modal [isRecipeRemoved]="isRecipeRemoved" [savedRecipeId]="savedRecipeId" (onGoToRecipeDetails)="goToRecipeDetails()"
+    [recipeIdToRemove]="recipeIdToRemove" (onRemoveSaveRecipeModal)="savedRecipeId = ''" (onRemoveDisplayMsg)="removeDisplayMsg()" 
+    (onRemoveRecipe) = "removeRecipe()"></modal>
+    
+    <app-footer></app-footer>
+</section>

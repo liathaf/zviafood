@@ -1,0 +1,128 @@
+.recipe {
+    background-color: $clr3;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    animation: recipeLoading 1.5s cubic-bezier(0.42, 0, 0.02, 1.05);
+    
+ 
+    
+    .prev-img-recipe-container{
+
+        position: relative; 
+        
+
+        a img{
+            transition: all .5s;
+        }
+       
+        .edit-trash{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            visibility: hidden;
+            opacity: 0;
+            
+            button{
+                transform: translate(-100%, -50%);
+                background-color: $clr1;
+                border-radius: 3px;
+                color: $clr3;
+                
+
+                &:nth-child(1){
+                margin-inline-end: 10px;
+                }
+
+                line-height: 3em;
+                padding: 0 20px;
+            }
+
+            
+    
+            transition: all .5s;
+            
+
+        }
+
+        &.user-style:hover{
+
+            .edit-trash{
+                visibility: visible;
+                opacity: 0.8;
+
+            }
+
+            a img {
+                opacity: .3;
+            }
+
+        }
+    }
+
+    .recipe-details-container{
+        padding: 10px 20px 40px 20px;
+        
+        .title-recipe {
+            transition: .3s;
+            text-align: center;
+
+            &:hover{
+                color:$clr2;
+
+            }
+        }
+
+        .desc{
+            margin-top: 5px;
+            text-align: center;
+            line-height: 1.3em;
+        }
+        .recipe-link{
+            font-family: AssistantBold;
+            color:$clr2;
+            &:hover{
+                text-decoration: underline;
+            }
+        } 
+    }
+    
+    .label-time-container{
+        margin-bottom: rem(15px);
+        width: 100%;
+        .time {
+           font-style: italic;
+            
+        }
+        .labels{
+            .label-container{
+
+                &:nth-child(2), &:nth-child(3){
+                    margin-inline-start: rem(10px);
+                }
+                .label{
+                    color: $clr3;
+                    background-color: $clr2;
+                    padding: 2px 5px;
+                    transition: .3s;
+                    
+                    &:hover{
+                        color: $clr2;
+                        background-color: $clr3;
+                        box-shadow: inset 1px 1px $clr2 ,  inset -1px -1px $clr2;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+
+@keyframes recipeLoading {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

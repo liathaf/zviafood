@@ -1,0 +1,56 @@
+/* Breakpoint mixins */
+
+@mixin for-mobile-layout {
+    @media (max-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+@mixin for-narrow-tablet {
+    @media (max-width: $narrow-tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-tablet-layout {
+    @media (max-width: $tablet-breakpoint) and (min-width: $mobile-breakpoint){
+        @content;
+    }
+}
+
+@mixin for-middel-layout {
+    @media (max-width: $middel-breakpoint){
+        @content;
+    }
+}
+
+@mixin for-desktop-layout {
+    @media (min-width: $tablet-breakpoint){
+        @content;
+    }
+}
+
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    overflow: hidden;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: ($height / $width) * 100%;
+     
+    }
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+    }
+  }
+  
+
+
+
+

@@ -1,0 +1,35 @@
+.about{
+    .title{
+        text-align: right;
+        color: $clr2;
+        
+    }
+
+    .desc{
+        
+        margin: rem(20px) 0 rem(60px) 0;
+
+        .paragraph{
+            line-height: 1.5em;
+            margin-bottom: 10px;
+
+            &:last-child{
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    .img-container{
+       
+        width: 350px;
+        height: 350px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        .about-img{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

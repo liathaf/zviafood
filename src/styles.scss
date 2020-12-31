@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+// // Setup
+@import "./assets/styles/setup/variables";
+@import "./assets/styles/setup/functions";
+@import "./assets/styles/setup/mixins.scss";
+@import "./assets/styles/setup/typography.scss";
+
+// // Basics
+@import "./assets/styles/basics/helpers";
+@import "./assets/styles/basics/layout";
+@import "./assets/styles/basics/base";
+@import "./assets/styles/basics/links";
+@import "./assets/styles/basics/buttons";
+
+// cmps
+@import "./app/cmps/recipe-preview/recipe-preview.component.scss";
+@import "./app/cmps/nav-bar/nav-bar.component.scss";
+@import "./app/cmps/recipe-list/recipe-list.component.scss";
+@import "./app/cmps/footer/footer.component.scss";
+@import "./app/cmps/recipe-filter/recipe-filter.component.scss";
+@import "./app/cmps/recipe-comment/recipe-comment.component.scss";
+@import "./app/cmps/comment-preview/comment-preview.component.scss";
+@import "./app/cmps/comment-form/comment-form.component.scss";
+@import "./app/cmps/modal/modal.component.scss";
+
+
+// pages
+@import "./app/pages/recipe-details/recipe-details.component.scss";
+@import "./app/pages/home/home.component.scss";
+@import "./app/pages/recipe-by-label/recipe-by-label.component.scss";
+@import "./app/pages/about/about.component.scss";
+@import "./app/pages/login/login.component.scss";
+@import "./app/pages/recipe-edit/recipe-edit.component.scss";

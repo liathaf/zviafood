@@ -1,0 +1,57 @@
+<header [ngClass]="{'smallerNavBar' : isScrolled}">
+  
+        <nav class="nav-bar container flex justify-center align-center">
+            
+            <div *ngIf="isLoggedIn" class="add-new-recipe-link-container">
+                <a #addNewRecipeLink (click)="goToRecipeEdit()" class="add-new-recipe-link flex justify-center align-center">
+                    <img src="../../../assets/img/plus.svg"/>
+                </a>
+                <div class="add-recipe-title">הוסף מתכון </div>
+            </div>
+
+            <div class="manu-icon flex justify-center" (click)="toggleManu()">
+                <label class="open-manu"></label>
+            </div>
+    
+            <div class="logo-links-filter-container">
+    
+                <a class="logo-link" [routerLink]="!atLogin? '/' : '/login/zvia'" [ngClass]="{'moveLogo' : moveLogo}">
+                    <img class="logo" src="../../../assets/img/logo-zvia.svg"/>
+                </a>
+
+
+                <!-- nav bar links for desktop  -->
+                <div *ngIf="!atLogin" class="nav-bar-links-container flex justify-center align-center">
+                    <ul #navBarLinks class="nav-bar-links flex align-center" [ngClass]="{'move-navbar-links' : moveLogo}">
+                        <li class="flex align-center justify-center">
+                            <a class="main-link main"  routerLink="/">ראשי</a> 
+                        </li>
+                        <li class="flex align-center justify-center">
+                            <a class="main-link about"  routerLink="/about">קצת עלי</a>
+                        </li>
+                        <li  class="flex align-center justify-center">
+                            <recipe-filter (onToggleSearchInput)="toggleLogoPos()" [labels]="labels"></recipe-filter>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>   
+</header>
+
+<!-- nav bar links for narrow-tablet and mobile -->
+<div *ngIf="!atLogin" #manu class="nav-bar-links-container narrow-tablet-style flex justify-center align-center">
+    <div class="close-manu-cotainer" (click)="toggleManu()">
+        <label class="close-manu"></label>
+    </div>
+    <ul class="nav-bar-links flex align-center" [ngClass]="{'move-navbar-links' : moveLogo}">
+        <li class="flex align-center justify-center">
+            <a class="main-link main" (click)="mainlinksNavigation('/')">ראשי</a> 
+        </li>
+        <li class="flex align-center justify-center">
+            <a class="main-link about" (click)="mainlinksNavigation('/about')">קצת עלי</a>
+        </li>
+        <li  class="flex align-center justify-center">
+            <recipe-filter (onSearchRecipe)="toggleManu()" (onClickedLabel)="toggleManu()" [labels]="labels"></recipe-filter>
+        </li>
+    </ul>
+</div>

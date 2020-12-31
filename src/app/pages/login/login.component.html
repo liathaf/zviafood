@@ -1,0 +1,20 @@
+<div class="login flex column align-center ">
+    <h1 class="title">כניסה למערכת</h1>
+    <form #loginFrom="ngForm" (ngSubmit)="onLogin(loginFrom)" class="form flex justify-center column">
+
+        <div class="input-container">
+            <input type="text" #name="ngModel" ngModel required name="username" placeholder="הכנסי שם משתמש..."/>
+            <p class="erorr-msg fs12" *ngIf="!name.valid && loginFrom.submitted">הזן שם משתמש</p>
+        </div>
+
+        <div class="input-container">
+            <input type="password" autocomplete="on" #password="ngModel" ngModel required name="password" placeholder="הכנסי סיסמא..."/>
+            <p class="erorr-msg fs12" *ngIf="!password.valid && loginFrom.submitted">הזן סיסמא</p>
+        </div>
+        <button class="login-btn">כניסה</button>
+        
+        
+    </form>
+    <p class="erorr-msg fs12">{{errorMsg}}</p>
+
+</div>
