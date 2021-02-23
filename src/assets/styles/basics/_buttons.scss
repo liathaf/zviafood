@@ -6,6 +6,13 @@
     background-color: $clr2;
     color: $clr3;
     transition: all .3s;
+
+    &:after{
+        content: "››";
+        position: relative;
+        top: 1px;
+        padding-inline-start: 5px;
+    }
     
     &:hover{
         

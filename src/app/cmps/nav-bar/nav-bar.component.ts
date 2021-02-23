@@ -1,4 +1,5 @@
-import { Component , ViewChild , ElementRef ,Output, EventEmitter ,Input, HostListener } from '@angular/core';
+import { Component , ViewChild , ElementRef ,Output, EventEmitter ,Input, HostListener , Inject , PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser} from '@angular/common';
 import { Router } from '@angular/router';
 import {ConnectedService} from '../../services/connected.service'
 
@@ -29,15 +30,19 @@ export class NavBarComponent{
   // listen to the scroll for the nav-bar tranformation 
   @HostListener('window:scroll') onScrollEvent(){
 
-    const positionY = window.scrollY;
-    if ((positionY) > 140) this.isScrolled = true;
-    else this.isScrolled = false;
+    if (isPlatformBrowser(this.platformId)){
+      
+      const positionY = window.scrollY;
+      if ((positionY) > 140) this.isScrolled = true;
+      else this.isScrolled = false;
+      
+    }
     
   }
   
 
 
-  constructor(private ConnectedService: ConnectedService , private router: Router) { }
+  constructor(private ConnectedService: ConnectedService , private router: Router , @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
   
@@ -87,18 +92,18 @@ export class NavBarComponent{
 
   }
 
-  goToRecipeEdit(){ /// this function is disables the hover effect for 1sec when navigate to edit page
-    this.addNewRecipeLink.nativeElement.style.pointerEvents = 'none';
-    setTimeout(() => {
-      this.addNewRecipeLink.nativeElement.style.pointerEvents = 'unset';
-    }, 1000);
-    this.router.navigateByUrl('/recipe/edit');
-  }
+  // goToRecipeEdit(){ /// this function is disables the hover effect for 1sec when navigate to edit page
+  //   this.addNewRecipeLink.nativeElement.style.pointerEvents = 'none';
+  //   setTimeout(() => {
+  //     this.addNewRecipeLink.nativeElement.style.pointerEvents = 'unset';
+  //   }, 1000);
+  //   this.router.navigateByUrl('/recipe/edit');
+  // }
   
 
   mainlinksNavigation(path){ /// when navigate to home/about
-    this.toggleManu();
     this.router.navigateByUrl(path);
+    this.toggleManu();
   }
 
 }

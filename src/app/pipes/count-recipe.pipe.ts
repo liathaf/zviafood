@@ -7,7 +7,7 @@ export class CountRecipePipe implements PipeTransform {
 
   transform(recipes: [], countRecipe: Number): unknown {
     if (!countRecipe) return recipes;
-    return recipes.map((recipe , idx) => {
+    return recipes.filter((recipe , idx) => {
       if (idx < countRecipe) return recipe;
     });
   }

@@ -47,6 +47,12 @@ export class RecipesService {
 
     }
 
+
+    public clearRecipes(){ // for recipeByLabel cmp , when cmp destroyed the recipes list
+        // need to be empty list when navigate to home page cmp
+        this._recipes$.next([]); 
+    }
+
     public getRecipeById(recipeId) {
 
         return this.http.get<Recipe[]>(this.BASE_URL + `/${recipeId}`)

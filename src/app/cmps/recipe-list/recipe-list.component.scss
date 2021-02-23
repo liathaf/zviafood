@@ -1,0 +1,27 @@
+.add-new-recipe-link-container{
+    
+    min-height: 200px;
+    background-color: $clr6;
+    // margin-bottom: 10px;
+    border: 1px dashed $clr2;
+
+    .add-new-recipe-link{
+    
+        width: 45px;
+        height: 45px;
+        background-color: $clr1;
+        border-radius: 999px;
+        margin-bottom: 10px;
+        
+
+        img{
+            display: inline-block;
+            width: 50%;
+            height: 50%;
+        }
+
+    
+    }
+
+    
+}

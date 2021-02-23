@@ -18,7 +18,6 @@ export class RecipeEditComponent implements OnInit {
   @ViewChild('elUnitIngri') elUnitIngri: ElementRef;
   @ViewChild('elIngriTitle') elIngriTitle: ElementRef;
   
-
   recipe = null;
 
   imgName;
@@ -57,6 +56,7 @@ export class RecipeEditComponent implements OnInit {
   saveRecipeMsg;
 
   atRecipeEdit = true;
+  isRecipeGoingToBeSaved;
 
 
   constructor(private RecipesService: RecipesService , private route: ActivatedRoute , private router:Router) { }
@@ -92,7 +92,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    /// when recipe is exist , yieldUnit inner text elment elment must update 
+    /// when recipe is exist , yieldUnit inner text elment must update 
     setTimeout(() => {
       if (this.recipe && this.recipe.yield) this.yieldLabel.nativeElement.innerText = this.recipe.yield.yieldUnit;
     }, 0);
@@ -101,11 +101,12 @@ export class RecipeEditComponent implements OnInit {
   onClickToUploagImg(ev) { // when clicking on the upload button, this function trigers a click event on input type file 
     this.imgInput.nativeElement.click();
     this.imgName = ev.target.name; // update which button user clicked to upload img
-
+    
+    
   }
 
   onUploadImg(ev) { // when event click trigerd , this function updetes the selected img url
-
+    
     if (!ev.target.files[0]) return; // when user canceles the upload img folder, no img is chosen
     ev.imgName = this.imgName;
     
@@ -114,7 +115,7 @@ export class RecipeEditComponent implements OnInit {
     }
     if (this.selectedImgs.includes(this.imgName)) this.removeImg(); // if it existes  , delete the name from the list for the loading img animation
     this.uploadeImg(ev); // upload img to Cloudinary
-    
+    ev.target.value= '' // This ensures that the change event will be triggered for the same file as well(same url). 
   }
 
 
@@ -531,9 +532,9 @@ export class RecipeEditComponent implements OnInit {
     
     const  isAllImgLoaded = this.uploadedImgs.every(img => img.imgUrl)
 
-    if (!this.uploadedImgs || this.uploadedImgs.length !==3 || !isAllImgLoaded || !this.recipeTitle || 
+    if (!this.uploadedImgs || this.uploadedImgs.length !==2 || !isAllImgLoaded || !this.recipeTitle || 
       !this.recipeDesc || !this.chosenLabels ||
-      !this.allIngredients || !this.preps) {
+      !this.allIngredients.length || !this.preps.length) {
         this.saveRecipeMsg = 'יש למלא את המקומות המסומנים בכוכבית';
         return;
       }
@@ -564,10 +565,17 @@ export class RecipeEditComponent implements OnInit {
       this.recipe.allIngredients = this.allIngredients
       this.recipe.howToPrepare = this.preps
       this.recipe.notes = this.notes
-        
+      
+
       try {
+
+        if (this.isRecipeGoingToBeSaved) return; // preventing from saving the recipe more then once while 
+        // user alredy clicked on the saving recipe button
+
+        this.isRecipeGoingToBeSaved = true; // change the content of the button to loading animation
         const savedRecipe:any = await this.RecipesService.saveRecipe(this.recipe);
         this.router.navigate([''],{ relativeTo: this.route , state: {saveRecipeId: savedRecipe._id}});
+        this.isRecipeGoingToBeSaved = false;
 
 
       }catch(err){

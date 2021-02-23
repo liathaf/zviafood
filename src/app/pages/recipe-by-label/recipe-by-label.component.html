@@ -1,4 +1,4 @@
-<div class="recipes-by-label flex column align-center container" *ngIf="recipesByLabel">
+<div class="recipes-by-label flex column align-center container" *ngIf="recipesByLabel.recipes">
     <h4 *ngIf="!navigateFromSearchInput" class="main-label fs40">{{recipesByLabel.label}}</h4>
     <div *ngIf="navigateFromSearchInput" class="search-title-container flex">
         <h1 class="title fs20">תוצאות עבור:</h1>

@@ -5,7 +5,8 @@
         </div>
         <h3 class="recently-recipes-title fs22">מתכונים אחרונים</h3>
         <recipe-list (removeRecipe)="onRemoveRecipe($event)"
-        [isLoggedIn]="isLoggedIn" [countRecipe]="countRecipe" [recipes]="recipes"></recipe-list>
-        <button *ngIf="countRecipe<recipes.length" (click)="changeCountRecipe()" class="see-more-recipes-btn">ראה עוד</button>
+        [countRecipe] = "countRecipe"
+        [isLoggedIn]="isLoggedIn" [recipes]="recipes"></recipe-list>
+        <button *ngIf="countRecipe<recipes.length" (click)="changeCountRecipe()" class="see-more-recipes-btn">מתכונים נוספים</button>
     </section>
 </div>

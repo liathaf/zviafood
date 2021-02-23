@@ -36,28 +36,60 @@
         }
         
         .recipe-list{  
-            column-gap: 20px;
-           
-            .recipe {
-                display: inline-block;
-                margin: 0 0 20px;
+            
+            display: grid;
+            margin-bottom: 20px;
+            .recipe{
+                margin: 0;
+                .prev-img-recipe-container{
+                    @include aspect-ratio(1, 1);
+                }
             }
-
+        
             &.recipe-by-title-style{
 
-                column-count: unset;
-                padding: 0 rem(50px);
-
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-                gap: 20px;
+                display: block;
+                
                 .recipe{
-                    margin: 0;
+                    display: flex;
+                    padding: 20px 0;
+                    height: 200px;
+                  
                     .prev-img-recipe-container{
-                        @include aspect-ratio(1, 1);
+                        width: 30%;
+                    
+                    }
+
+                    .recipe-details-container{
+                        width: 70%;
+                        align-items: flex-start;
+                        
+                        .time{
+                            margin: 5px 0;
+                        
+                        }
+                            
+                        
+                        a{
+                            .title-recipe{text-align: start;}
+                        }
+                        .desc{
+                            text-align: start;
+                            a{
+                                display: block;
+                                margin-top: 10px;
+
+                                &:after{
+                                    content: "››";
+                                    position: relative;
+                                    top: 1px;
+                                    padding-inline-start: 5px;
+                                }
+                            }
+                        }
                     }
                 }
-
+                                
             }
         }
 
@@ -72,7 +104,10 @@
             max-width: $desktop-breakpoint;
         }
         .recipe-list{
-        column-count: 3;
+        
+            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+            
         }
 
 
@@ -81,7 +116,14 @@
     @include for-middel-layout{
 
         .recipe-list{
-            column-count: 2;
+            gap: 30px;
+
+
+            .recipe{
+                .recipe-details-container{
+                    height: 180px;
+                }
+            }
         }
 
         .recipe-edit{
@@ -135,7 +177,7 @@
             max-width: $tablet-breakpoint;
         }
         .recipe-list{
-        column-count: 2;
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
         }
         
         .comment{      
@@ -187,6 +229,7 @@
         .main-content {
             padding-top: 100px;
         }
+
 
         header {
             .nav-bar{
@@ -411,6 +454,12 @@
             }
         }
 
+        .recipe-list.recipe-by-title-style .recipe .prev-img-recipe-container .edit-trash button{
+            
+            line-height: 2em;
+            padding: 0 7px;
+        }
+
         .recipe-edit{
     
             form{
@@ -563,31 +612,45 @@
 
         }
 
-        .recipe-list {
-            column-count: 1;
+        .main-content .recipe-list.recipe-by-title-style {
+            
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+            gap: 20px;
 
-            .recipe {
+            .recipe{
+                display: block;
+                padding: 0;
+                height: initial;
                 
                 .prev-img-recipe-container{
-                    img {
-                        height: 200px;
+                    width: initial;
+
+                    .edit-trash button{
+            
+                        line-height: 3em;
+                        padding: 0 20px;
+                    }
+                
+                }
+                .recipe-details-container{
+                    width: initial;
+                    align-items: center;
+                    
+                    a{
+                        .title-recipe{text-align: center;}
+                    }
+                    .desc{
+                        text-align: center;
+                       
                     }
                 }
             }
+
+       
         }
 
-        .recipes-by-label{
-            .recipe-list.recipe-by-title-style{
-                column-count: 1;
-                display: inline-block;
-                padding: 0;
-
-                .recipe {
-                    margin: 20px 10px;
-                }
-            }
-        }
-
+      
         .recipe-details .recipe-img {
             height: 200px;
         }
@@ -661,7 +724,6 @@
     }
 
 }
-
 
 
 

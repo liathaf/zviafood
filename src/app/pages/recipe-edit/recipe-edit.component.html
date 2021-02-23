@@ -18,16 +18,6 @@
 
                 <div class="flex uploaded-container"> 
                     <div class="uploaded-img-button-container flex column">
-                        <button name="recipePreview" (click)="onClickToUploagImg($event)" type="button">שער</button>
-                        <div class="img-container" *ngFor="let img of uploadedImgs">
-                            <img class="uploded-img" *ngIf="img.imgName === 'recipePreview'" [src]="img.imgUrl" />
-                        </div>
-                        <p class="fs12" *ngIf="!isImgLoaded('recipePreview') && !isSelecedImg('recipePreview')">טרם הועלתה
-                            תמונה</p>
-                        <img *ngIf="!isImgLoaded('recipePreview') && isSelecedImg('recipePreview')" class="loading-icon"
-                            src="../../../assets/img/loading.png">
-                    </div>
-                    <div class="uploaded-img-button-container flex column">
                         <button name="recipeDetails1" (click)="onClickToUploagImg($event)" type="button">עליונה</button>
                         <div class="img-container" *ngFor="let img of uploadedImgs">
                             <img class="uploded-img" *ngIf="img.imgName === 'recipeDetails1'" [src]="img.imgUrl" />
@@ -334,7 +324,7 @@
             </div>
             
             
-            <button class="save-recipe-btn">שמור</button>
+            <button class="save-recipe-btn" [ngClass]="{'loading-saved-recipe-btn': isRecipeGoingToBeSaved }"></button>
             <p class="msg save-recipe-msg fs14">{{saveRecipeMsg}}</p>
         </form>
         

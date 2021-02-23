@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable , Inject , PLATFORM_ID} from '@angular/core';
+import { isPlatformBrowser} from '@angular/common';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +18,7 @@ const KEY = 'user';
 })
 export class UserService {
 
-  constructor(private StorageService:StorageService , private http: HttpClient) { }
+  constructor(private StorageService:StorageService , private http: HttpClient , @Inject(PLATFORM_ID) private platformId: Object) { }
 
   private API_URL = environment.API_URL;
   private BASE_URL = `${this.API_URL}/api/auth`
@@ -31,7 +32,9 @@ export class UserService {
           .pipe(
             tap((user)=> this._user$.next(user))).toPromise();
       
-      sessionStorage.setItem('user', JSON.stringify(savedUser))
+      if (isPlatformBrowser(this.platformId)) {
+        sessionStorage.setItem('user', JSON.stringify(savedUser))
+      }
       
     } catch({error}) {
       throw 'שם המשתמש/סיסמא לא נכונים'
@@ -41,8 +44,10 @@ export class UserService {
   }
   
   public isLoggedinUser(){ 
-    if (sessionStorage.getItem('user')) return true ;
-   
+    if (isPlatformBrowser(this.platformId)){
+      if (sessionStorage.getItem('user')) return true ;
+    }
+    
         
      
   }

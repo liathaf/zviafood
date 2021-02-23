@@ -30,12 +30,4 @@ export class RecipePreviewComponent implements OnInit {
   }
 
 
-  get isMobileQuery(){ // changing the recipe img preview for mobile
-    const mq = window.matchMedia( "(max-width: 460px)");
-    return mq.matches;
-  }
-
-  
-
-
 }

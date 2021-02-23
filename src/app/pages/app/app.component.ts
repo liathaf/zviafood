@@ -1,5 +1,7 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit , Inject , PLATFORM_ID} from '@angular/core';
 import { Router } from '@angular/router';
+import { isPlatformBrowser} from '@angular/common';
+
 
 import { RecipesService } from '../../services/recipe.service';
 import { UserService } from '../../services/user.service'
@@ -30,7 +32,7 @@ export class AppComponent implements OnInit {
 
 
   constructor(private RecipesService: RecipesService , private UserService: UserService , 
-    private router: Router , private ConnectedService: ConnectedService) { }
+    private router: Router , private ConnectedService: ConnectedService , @Inject(PLATFORM_ID) private platformId: Object) { }
 
     
 
@@ -81,7 +83,7 @@ export class AppComponent implements OnInit {
     this.ConnectedService.getLinkVal(linkVal); 
 
     // on load , scroll page to the top
-    window.scroll(0, 0);
+    if(isPlatformBrowser(this.platformId)) window.scroll(0, 0);
 
     
     

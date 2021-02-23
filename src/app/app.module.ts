@@ -56,7 +56,7 @@ registerLocaleData(localeHe);
     CountRecipePipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

@@ -1,5 +1,13 @@
 
 <div *ngIf="recipes" class="recipe-list" [ngClass]="{'recipe-by-title-style' : atRecipeByTitlePage}" >
+    <!-- add-recipe -->
+    <div *ngIf="isLoggedIn && !atRecipeByTitlePage" class="add-new-recipe-link-container flex column justify-center align-center">
+        <a class="add-new-recipe-link flex justify-center align-center" routerLink="/recipe/edit">
+            <img src="../../../assets/img/plus.svg"/>
+        </a>
+        <h1 class="fs16">הוסף מתכון</h1>
+    </div>
+    <!-- list of recipes -->
     <recipe-preview *ngFor="let recipe of recipes | countRecipe: countRecipe"
     (onRemoveRecipe)="this.removeRecipe.emit($event)"
     [recipe]="recipe" [isLoggedIn]="isLoggedIn" 

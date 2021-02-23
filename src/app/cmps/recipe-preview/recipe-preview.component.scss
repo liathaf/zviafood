@@ -1,9 +1,8 @@
 .recipe {
-    background-color: $clr3;
-    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    // background-color: $clr3;
+    // box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
     animation: recipeLoading 1.5s cubic-bezier(0.42, 0, 0.02, 1.05);
     
- 
     
     .prev-img-recipe-container{
 
@@ -59,8 +58,8 @@
     }
 
     .recipe-details-container{
-        padding: 10px 20px 40px 20px;
-        
+        padding: 10px 20px;
+        height:200px;
         .title-recipe {
             transition: .3s;
             text-align: center;
@@ -75,6 +74,7 @@
             margin-top: 5px;
             text-align: center;
             line-height: 1.3em;
+            
         }
         .recipe-link{
             font-family: AssistantBold;

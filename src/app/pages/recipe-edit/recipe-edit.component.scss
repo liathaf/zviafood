@@ -1,4 +1,10 @@
 .recipe-edit{
+    
+    position: relative; 
+
+    * {
+        font-family: AssistantSemiBold;
+    }
 
     .msg {
         color: red;
@@ -515,8 +521,8 @@
 
         .save-recipe-btn{
           
-            line-height: 2.5em;
-            padding: 0 30px;
+            // line-height: 2.5em;
+            padding: 8px 30px;
             background-color: $clr2;  
             color: $clr3;
             align-self: center;  
@@ -524,9 +530,28 @@
             border-radius: 5px; 
             border: 1px solid $clr2; 
             
+            &::after {
+                content: "שמור";
+                width: 20px;
+                height: 20px;
+
+            }
+
             &:hover{
                 background-color: $clr5;
                 color:$clr2;
+            }
+
+            &.loading-saved-recipe-btn{
+              
+                &::after {
+                    content: "";
+                    display: block;
+                    background: url('/assets/img/loading.png') no-repeat center;
+                    background-size: 20px; 
+                    animation: loadingAnimation 2s infinite;    
+
+                }
             }
         }
 

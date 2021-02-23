@@ -1,10 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , Inject , PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+import { isPlatformBrowser} from '@angular/common';
 
 import { RecipesService } from '../../services/recipe.service'
 import { ConnectedService } from '../../services/connected.service'
 import { Recipe } from '../../models/recipe.model';
+
 
 
 
@@ -17,14 +20,15 @@ import { Recipe } from '../../models/recipe.model';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private RecipesService: RecipesService, private route: ActivatedRoute, private ConnectedService: ConnectedService) { }
+  constructor(private RecipesService: RecipesService, private route: ActivatedRoute, private ConnectedService: ConnectedService ,
+    @Inject(PLATFORM_ID) private platformId: Object) { }
 
   @Input() isLoggedIn;
   recipes:Recipe[] = [];
   atHome = true;
-  savedRecipeId = history.state.saveRecipeId;  // when recipe is saved , savedRecipeId is sent from recipe-edit cmp;
-  countRecipe = 15;
+  countRecipe;
   subscription : Subscription;
+  savedRecipeId;
 
   async ngOnInit() {
 
@@ -33,6 +37,14 @@ export class HomeComponent implements OnInit {
       this.recipes = [...recipes];
     });
 
+    if (isPlatformBrowser(this.platformId)){
+      this.savedRecipeId = history.state.saveRecipeId;  // when recipe is saved , savedRecipeId is sent from recipe-edit cmp;
+    }
+
+  }
+
+  ngAfterViewInit(){
+    this.countRecipe = this.isLoggedIn? 8 : 9;
   }
 
   onRemoveRecipe(recipeId) {
@@ -40,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   changeCountRecipe(){
-    this.countRecipe+=15
+    this.countRecipe+=6
   }
 
    ngOnDestroy(): void {

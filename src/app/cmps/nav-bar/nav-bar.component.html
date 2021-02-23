@@ -2,13 +2,6 @@
   
         <nav class="nav-bar container flex justify-center align-center">
             
-            <div *ngIf="isLoggedIn" class="add-new-recipe-link-container">
-                <a #addNewRecipeLink (click)="goToRecipeEdit()" class="add-new-recipe-link flex justify-center align-center">
-                    <img src="../../../assets/img/plus.svg"/>
-                </a>
-                <div class="add-recipe-title">הוסף מתכון </div>
-            </div>
-
             <div class="manu-icon flex justify-center" (click)="toggleManu()">
                 <label class="open-manu"></label>
             </div>
