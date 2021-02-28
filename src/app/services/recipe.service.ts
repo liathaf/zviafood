@@ -40,7 +40,6 @@ export class RecipesService {
 
 
     loadRecipes(filterBy) {
-    
         this.http.get<Recipe[]>(`${this.BASE_URL}?q=${filterBy}`)
             .pipe(
                 map(recipes => recipes)).subscribe(recipes => this._recipes$.next(recipes));
