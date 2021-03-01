@@ -9,7 +9,7 @@ export class ConnectedService {
   constructor() { }
 
 
-  /// when user want to remove recipe
+  /// when user want to remove recipe/
   private recipeId = new BehaviorSubject('');
   recipeId$ = this.recipeId.asObservable();
   
