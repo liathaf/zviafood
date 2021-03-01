@@ -1,8 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecipesService } from '../../services/recipe.service';
 import { ConnectedService } from '../../services/connected.service';
 import { Subscription } from 'rxjs';
+import { Title, Meta } from '@angular/platform-browser';
+
+import { RecipesService } from '../../services/recipe.service';
+
 
 
 
@@ -24,7 +27,7 @@ export class RecipeDetailsComponent implements OnInit {
   subscription : Subscription;
 
   constructor(private route: ActivatedRoute, private router: Router, private RecipesService: RecipesService , 
-    private ConnectedService:ConnectedService) { }
+    private ConnectedService:ConnectedService, private titleService: Title, private metaService: Meta) { }
 
   ngOnInit(): void {
     
@@ -44,7 +47,20 @@ export class RecipeDetailsComponent implements OnInit {
          console.log('recipe-details cmp: cannot save comment');
        }
     });
-    
+
+    //title 
+    this.titleService.setTitle('צביה מבשלת | מתכונים מבית אמא');
+    /// meta tags
+    this.metaService.addTags([
+      {name: 'description', content: this.recipe.desc},
+      {property: 'og:site_name', content: 'צביה מבשלת | מתכונים מבית אמא'},
+      {property: 'og:type', content: 'website'},
+      {property: 'og:url', content: `http://www.zviacooking.co.il/recipe/${this.recipe._id}`},
+      {property: 'og:title', content: `${this.recipe.title} | צביה מבשלת`},
+      {property: 'og:description', content: this.recipe.desc},
+      {property: 'og:image', content: this.getImgUrl('recipeDetails1')}
+    ]);
+
   }
 
 
