@@ -530,11 +530,14 @@ export class RecipeEditComponent implements OnInit {
     var fullYield = null;
     
     
-    const  isAllImgLoaded = this.uploadedImgs.every(img => img.imgUrl)
+    const  isAllImgLoaded = this.uploadedImgs.every(img => img.imgUrl);
 
-    if (!this.uploadedImgs || this.uploadedImgs.length !==2 || !isAllImgLoaded || !this.recipeTitle || 
+    
+
+    if (!this.uploadedImgs || this.uploadedImgs.length !==3 || !isAllImgLoaded || !this.recipeTitle || 
       !this.recipeDesc || !this.chosenLabels ||
       !this.allIngredients.length || !this.preps.length) {
+        console.log('recipe edit - this.uploadedImgs.length' , this.uploadedImgs.length);
         this.saveRecipeMsg = 'יש למלא את המקומות המסומנים בכוכבית';
         return;
       }
