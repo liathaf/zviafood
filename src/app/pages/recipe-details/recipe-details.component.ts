@@ -49,7 +49,7 @@ export class RecipeDetailsComponent implements OnInit {
     });
 
     //title 
-    this.titleService.setTitle('צביה מבשלת | מתכונים מבית אמא');
+    this.titleService.setTitle(`${this.recipe.title} | צביה מבשלת`);
     /// meta tags
     this.metaService.addTags([
       {name: 'description', content: this.recipe.desc},
