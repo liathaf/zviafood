@@ -11,14 +11,12 @@ import { Router } from '@angular/router';
 export class RecipeFilterComponent {
 
   @Input() labels;
-  @Output() onToggleSearchInput = new EventEmitter();
   @Output() onSearchRecipe = new EventEmitter();
   @Output() onClickedLabel = new EventEmitter();
   @ViewChild('elLabels') elLabels: ElementRef;
 
 
   filterBy;
-  isShowSearchInput;
  
 
 
@@ -29,18 +27,12 @@ export class RecipeFilterComponent {
 
   onEnter(){
     if (!this.filterBy) return;
-    this.toggleSearchInput(); // for desktop style , move the position of the nav-bar logo
     this.onSearchRecipe.emit(); // for narrow tablet and mobile , hide nav-bar links
     this.router.navigate([`recipe/label/${this.filterBy}` , {search: true}]);
     this.filterBy = '';
 
   }
 
-  toggleSearchInput(){
-    // when clicking on search icon
-    this.isShowSearchInput = !this.isShowSearchInput;
-    this.onToggleSearchInput.emit();
-  }
 
   goToRecipeByLabels(label){
     

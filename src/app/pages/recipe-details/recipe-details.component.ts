@@ -98,6 +98,10 @@ export class RecipeDetailsComponent implements OnInit {
     return imgUrl;
     
   }
+  
+  getSharingLink(whatsAppLink){
+    return `${whatsAppLink}https://www.zviacooking.co.il/recipe/${this.recipe._id}`
+  }
 
 
   ngOnDestroy(): void {

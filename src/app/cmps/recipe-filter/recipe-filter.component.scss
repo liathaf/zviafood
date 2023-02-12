@@ -1,16 +1,23 @@
 .recipe-filter{     
 
 
-   
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+
     .search-title{
         margin-bottom: rem(10px);
     }
 
     .search-input {
+        
     
         .form-container{
             
-            
+            border: #1d1d1d 1px solid;
+            border-radius: 99px;
+            padding: rem(2px) rem(10px);
+
             .search-icon{
                 
                 cursor: pointer;
@@ -30,11 +37,12 @@
                
                 
                 .input-filter{
+
                     background-color:inherit;
+                    max-width: 160px;
+                    padding: rem(10px);
                     border: none;
-                    max-width: 0;
-                    padding: rem(10px) 0;
-                    transition: all 0.5s;
+                   
                    
                     
                     
@@ -47,26 +55,6 @@
         
     }
     
-    &.show-search-input{
-
-        .form-container{
-
-                border-bottom: $clr1 1px solid;
-
-                .filter-recipe-from{
-               
-                
-                    .input-filter{
-                      
-                        max-width: 160px;
-                        padding: rem(10px);
-
-                    }
-                }
-
-        }
-
-    }
     
 
 

@@ -1,6 +1,5 @@
 .recipe-details {
     .recipe-title-desc-container {
-        margin-bottom: 50px;
         .recipe-title {
             
             font-weight: 100;
@@ -17,8 +16,24 @@
         
     }
 
+    .share-links{
+         
+        p{
+            line-height: 1.5em;
+            
+        }
+        padding: rem(20px) 0;
+        align-self: end;
+        gap: rem(10px);
+        img{
+            width: rem(30px);
+            height: rem(30px);
+        }
+        
+    }
+
     .recipe-img{
-        height: 500px;
+        // height: 500px;
         margin: 50px 0 0 0;
     }
     

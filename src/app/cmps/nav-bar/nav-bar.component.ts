@@ -23,7 +23,6 @@ export class NavBarComponent{
   @ViewChild('addNewRecipeLink') addNewRecipeLink: ElementRef;
   isOpenManu;
   isScrolled;
-  moveLogo;
   linksClicked;
 
 
@@ -67,11 +66,6 @@ export class NavBarComponent{
     this.isOpenManu = !this.isOpenManu;
     this.onOpenMenu.emit(this.isOpenManu); 
  
-  }
-  
-  toggleLogoPos(){ // the logo moves when clicking on the search recipe icon
-    this.moveLogo = !this.moveLogo; 
-    
   }
   
   toggleLinks(linkVal){

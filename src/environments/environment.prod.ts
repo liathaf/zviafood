@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://zviarecipes-backend.herokuapp.com'
+  API_URL: 'https://zvia-cooking---back-end.firebaseapp.com'
 };

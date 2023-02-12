@@ -30,6 +30,7 @@ import { RecipeEditComponent } from './pages/recipe-edit/recipe-edit.component';
 import { AddCountStepPrepPipe } from './pipes/add-count-step-prep.pipe';
 import { ModalComponent } from './cmps/modal/modal.component';
 import { CountRecipePipe } from './pipes/count-recipe.pipe';
+import { LessonsComponent } from './pages/lessons/lessons.component';
 registerLocaleData(localeHe);
 
 @NgModule({
@@ -53,7 +54,8 @@ registerLocaleData(localeHe);
     RecipeEditComponent,
     AddCountStepPrepPipe,
     ModalComponent,
-    CountRecipePipe
+    CountRecipePipe,
+    LessonsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

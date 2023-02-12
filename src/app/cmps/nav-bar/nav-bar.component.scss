@@ -65,12 +65,12 @@ header {
             &:hover{
                 .open-manu::before{
                     transform:rotate(41deg);
-                    top: 3px;
+                    top: 4px;
                     width: 10px;
                 }
                 .open-manu::after{
                     transform:rotate(-41deg);
-                    top: -4px;
+                    top: -3px;
                     width: 10px;
                 }
 
@@ -78,18 +78,15 @@ header {
         }
 
         .logo-links-filter-container{
-           
+           position: relative;
+           width: 100%;
             .logo-link {
-                
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -76%);
-                transition: all .3s;
-                
+                width: 160px;
+                display: inline-block;
+             
                 .logo {
-                    width: 160px;
                     
+                    width: 100%;
                 }
                 
                 &.login-style {
@@ -99,16 +96,10 @@ header {
             }
 
             .nav-bar-links{  
-                
-               
                 position: absolute;
                 top: 50%;
-                left: 50%;
-                transform: translate(-62%, 33%);
-                transition: all .3s;
-                height: 47px;
-                min-width: 320px;
-                
+                transform: translate(-78%,0);
+
 
 
                 li{
@@ -141,14 +132,20 @@ header {
                     }
                 }
 
-
-                &.move-navbar-links{
-                    min-width: 440px;
-                    
-
-                }
             }
           
+        }
+
+        .facebook-icon{
+            width: unset;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(50%, -35%);
+            height: 40px;
+            width: 40px;
+            fill: $clr1;
+        
         }
 
     }
@@ -164,17 +161,11 @@ header {
             .logo-links-filter-container{
                
                 .logo-link{
-                    transform: translate(45%, -60%);
-                   
-
-                    &.moveLogo{ /// when click on search icon
-                        transform: translate(68%, -60%);    
-                    }
+                    
                 }
 
                 .nav-bar-links{
-                    transition: all .3s;
-                    transform: translate(-78%, -50%);
+                   
                    
                 }
             }

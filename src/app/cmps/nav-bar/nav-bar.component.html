@@ -1,33 +1,39 @@
 <header [ngClass]="{'smallerNavBar' : isScrolled}">
   
-        <nav class="nav-bar container flex justify-center align-center">
+        <nav class="nav-bar container flex align-center">
             
             <div class="manu-icon flex justify-center" (click)="toggleManu()">
                 <label class="open-manu"></label>
             </div>
     
-            <div class="logo-links-filter-container">
+            <div class="logo-links-filter-container flex">
     
-                <a class="logo-link" [routerLink]="!atLogin? '/' : '/login/zvia'" [ngClass]="{'moveLogo' : moveLogo}">
+                <a class="logo-link" [routerLink]="!atLogin? '/' : '/login/zvia'" >
                     <img class="logo" src="../../../assets/img/logo-zvia.svg"/>
                 </a>
 
 
                 <!-- nav bar links for desktop  -->
                 <div *ngIf="!atLogin" class="nav-bar-links-container flex justify-center align-center">
-                    <ul #navBarLinks class="nav-bar-links flex align-center" [ngClass]="{'move-navbar-links' : moveLogo}">
+                    <ul #navBarLinks class="nav-bar-links flex align-center">
                         <li class="flex align-center justify-center">
                             <a class="main-link main"  routerLink="/">ראשי</a> 
                         </li>
                         <li class="flex align-center justify-center">
                             <a class="main-link about"  routerLink="/about">קצת עלי</a>
                         </li>
+                        <li class="flex align-center justify-center">
+                            <a class="main-link about"  routerLink="/lessons">סדנאות</a>
+                        </li>
                         <li  class="flex align-center justify-center">
-                            <recipe-filter (onToggleSearchInput)="toggleLogoPos()" [labels]="labels"></recipe-filter>
+                            <recipe-filter [labels]="labels"></recipe-filter>
                         </li>
                     </ul>
                 </div>
             </div>
+            <a href="https://www.facebook.com/ZviaCooking" target="_blank" rel="noreferrer noopener">
+                <img class="facebook-icon" src="../../../assets/img/facebook-icons.svg" alt="">
+            </a>
         </nav>   
 </header>
 
@@ -36,12 +42,15 @@
     <div class="close-manu-cotainer" (click)="toggleManu()">
         <label class="close-manu"></label>
     </div>
-    <ul class="nav-bar-links flex align-center" [ngClass]="{'move-navbar-links' : moveLogo}">
+    <ul class="nav-bar-links flex align-center">
         <li class="flex align-center justify-center">
             <a class="main-link main" (click)="mainlinksNavigation('/')">ראשי</a> 
         </li>
         <li class="flex align-center justify-center">
             <a class="main-link about" (click)="mainlinksNavigation('/about')">קצת עלי</a>
+        </li>
+        <li class="flex align-center justify-center">
+            <a class="main-link about"  routerLink="/lessons">סדנאות</a>
         </li>
         <li  class="flex align-center justify-center">
             <recipe-filter (onSearchRecipe)="toggleManu()" (onClickedLabel)="toggleManu()" [labels]="labels"></recipe-filter>
