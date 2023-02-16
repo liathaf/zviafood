@@ -1,0 +1,47 @@
+.lessons{
+
+    .lesson-title{   
+        color: #ffb612;
+        margin-bottom: rem(10px);
+        
+    }
+    
+    .lesson-desc{
+        
+        p{ 
+            font-size: rem(18px);    
+            text-align: center;
+            &.bold{
+                font-family: AssistantSemiBold;
+            }
+            line-height: 1.5em;
+            &:nth-child(2), &:nth-child(6) , &:nth-child(8), 
+            ~.lesson-price-container ,&:last-child{
+                padding-bottom: rem(10px);
+                
+                
+            }
+            
+            
+        }
+        
+        .lesson-price-container{
+            
+            padding: 0 rem(10px);
+    
+
+            p{
+                line-height: 1.5em;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .lessos-imgs-container{
+        gap: rem(10px);
+        img{
+            width: 30%;
+        }
+    }
+
+}

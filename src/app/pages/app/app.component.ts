@@ -54,7 +54,9 @@ export class AppComponent implements OnInit {
     });
 
     // on reload , update loggedin user
-    this.isLoggedIn = this.UserService.isLoggedinUser();
+    // this.isLoggedIn = this.UserService.isLoggedinUser(); 
+
+    this.isLoggedIn = true; /// making true to show the recipes editing (admin service). 
     
     // on login ,update loggedin user
     this.UserService.user$.subscribe(user => {

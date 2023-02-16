@@ -1,0 +1,21 @@
+[debug] [2023-02-13T10:41:22.089Z] ----------------------------------------------------------------------
+[debug] [2023-02-13T10:41:22.091Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\liath\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-02-13T10:41:22.091Z] CLI Version:   11.22.0
+[debug] [2023-02-13T10:41:22.091Z] Platform:      win32
+[debug] [2023-02-13T10:41:22.091Z] Node Version:  v16.16.0
+[debug] [2023-02-13T10:41:22.092Z] Time:          Mon Feb 13 2023 12:41:22 GMT+0200 (שעון ישראל (חורף))
+[debug] [2023-02-13T10:41:22.093Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-13T10:41:22.101Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-13T10:41:22.102Z] > authorizing via signed-in user (liathaf@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\liath\Desktop\zviafood-demo\front-end
+
